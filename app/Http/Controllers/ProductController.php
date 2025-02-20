@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 
@@ -66,10 +67,10 @@ class ProductController extends Controller
 
     public function generateRecords()
     {
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             $status = rand(0, 1) == 0 ? 'Allowed' : 'Prohibited';
             Product::create([
-                'name' => 'Product ' . ($i+1),
+                'name' => 'Product ' . ($i+1).' '. Carbon::now()->toString(),
                 'status' => $status,
                 'price' => rand(100, 1000) / 10
             ]);

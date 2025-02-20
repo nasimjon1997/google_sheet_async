@@ -30,7 +30,12 @@
                     <span class="menu-title text-truncate" data-i18n="Dashboards">Google Sheet</span>
                 </a>
             </li>
-            {{-- @endif --}}
+            <li class="nav-item {{ Route::currentRouteName() == 'products.fetch' ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('products.fetch') }}" target="_blank">
+                    <i data-feather="list"></i>
+                    <span class="menu-title text-truncate" data-i18n="Dashboards">Google fetch</span>
+                </a>
+            </li>
 
         </ul>
     </div>

@@ -26,3 +26,11 @@ Route::get('/truncate-records', [ProductController::class, 'truncateRecords'])->
 
 Route::get('/google-sheets', [GoogleSheetController::class, 'index'])->name('google_sheets.index');
 Route::put('/google-sheets', [GoogleSheetController::class, 'update'])->name('google_sheets.update');
+
+
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/fetch/{count?}', function ($count = null) {
+    Artisan::call('google:fetch', ['count' => $count]);
+    return nl2br(Artisan::output()); // Отображаем вывод команды в браузере
+})->name('products.fetch');
